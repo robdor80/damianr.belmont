@@ -1,16 +1,25 @@
 /* =========================================
-   VARIABLES Y RESET
+   VARIABLES Y PALETA DE COLOR
    ========================================= */
-   :root {
-    --bg-color: #0a0a0a;       /* Negro profundo */
-    --text-main: #e0e0e0;      /* Blanco roto */
-    --text-muted: #888888;     /* Gris para secundarios */
-    --accent: #d4af37;         /* Dorado muy sutil y apagado (opcional para detalles) */
-    --font-serif: 'Georgia', 'Times New Roman', serif; /* Elegancia */
-    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* UI Limpia */
-    --header-height: 60px;
+:root {
+    /* Paleta solicitada: Azul Oscuro Celúreo + Dorado Apagado */
+    --bg-color: #050b14;       /* Azul muy oscuro, casi negro (Fondo principal) */
+    --bg-alt: #0a1624;         /* Azul oscuro ligeramente más claro (Secciones alternas) */
+    --text-main: #e6e6e6;      /* Blanco roto (Lectura principal) */
+    --text-muted: #8a93a0;     /* Gris azulado (Textos secundarios) */
+    --accent: #b89b5e;         /* Dorado oscuro apagado (Solo acentos) */
+    
+    /* Tipografía */
+    --font-serif: 'Georgia', 'Times New Roman', serif; /* Elegancia literaria */
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Limpieza UI */
+    
+    /* Dimensiones */
+    --header-height: 70px;     /* Aumentado ligeramente para más aire */
 }
 
+/* =========================================
+   RESET Y BASE
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -21,13 +30,14 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Texto nítido en iOS */
+    line-height: 1.7;          /* Mayor altura de línea para mejor lectura */
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s ease;
 }
 
 ul {
@@ -43,16 +53,17 @@ ul {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background-color: rgba(10, 10, 10, 0.95); /* Casi opaco */
-    border-bottom: 1px solid #222;
+    background-color: rgba(5, 11, 20, 0.95); /* Fondo base con ligera transparencia */
+    border-bottom: 1px solid rgba(138, 147, 160, 0.1); /* Línea sutil gris azulada */
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(5px); /* Pequeño desenfoque si el navegador lo soporta */
 }
 
 .header-container {
-    width: 90%;
+    width: 88%; /* Márgenes laterales más cuidados */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,19 +71,25 @@ ul {
 
 .author-name {
     font-family: var(--font-serif);
-    font-size: 1rem;
-    letter-spacing: 2px;
+    font-size: 0.95rem;
+    letter-spacing: 2.5px; /* Más aire entre letras */
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--text-main);
 }
 
 .menu-toggle {
     background: none;
     border: none;
     color: var(--text-main);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
     padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--accent); /* Dorado al pasar el ratón */
 }
 
 /* =========================================
@@ -90,8 +107,8 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translateY(-100%); /* Oculto arriba */
-    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Animación más suave */
 }
 
 .mobile-nav.active {
@@ -100,13 +117,19 @@ ul {
 
 .menu-close {
     position: absolute;
-    top: 15px;
-    right: 5%;
+    top: 20px;
+    right: 6%;
     background: none;
     border: none;
-    color: var(--text-main);
-    font-size: 2rem;
+    color: var(--text-muted);
+    font-size: 2.5rem;
     cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.menu-close:hover {
+    color: var(--accent);
 }
 
 .nav-list {
@@ -114,106 +137,119 @@ ul {
 }
 
 .nav-list li {
-    margin: 25px 0;
+    margin: 30px 0; /* Más espacio vertical entre opciones */
 }
 
 .nav-link {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-muted);
-    transition: color 0.2s;
+    font-weight: normal;
 }
 
 .nav-link:hover, .nav-link:active {
-    color: var(--text-main);
+    color: var(--accent); /* Dorado activo */
 }
 
 /* =========================================
    HERO / PRESENTACIÓN
    ========================================= */
 .hero-section {
-    padding-top: calc(var(--header-height) + 40px);
-    padding-bottom: 60px;
-    padding-left: 5%;
-    padding-right: 5%;
-    min-height: 50vh;
+    /* Ajuste para header fijo + más aire superior/inferior */
+    padding-top: calc(var(--header-height) + 60px); 
+    padding-bottom: 80px;
+    padding-left: 6%;
+    padding-right: 6%;
+    
+    /* Aumento de altura mínima para mayor presencia */
+    min-height: 65vh; 
+    
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid rgba(138, 147, 160, 0.05); /* Separador casi invisible */
 }
 
 .hero-content h1 {
     font-family: var(--font-serif);
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: normal;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    font-weight: 400; /* Menos peso visual, más elegante */
     color: var(--text-main);
 }
 
 .tagline {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
-    max-width: 400px;
+    max-width: 320px; /* Ancho controlado para lectura en móvil */
     margin: 0 auto;
+    font-weight: 300;
 }
 
 /* =========================================
-   SECCIÓN GENÉRICA
+   SECCIONES GENERALES
    ========================================= */
 section {
-    padding: 60px 5%;
+    padding: 80px 6%; /* Mayor respiración (padding vertical aumentado) */
 }
 
 .section-title {
     font-family: var(--font-serif);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
+    letter-spacing: 3px;
+    margin-bottom: 50px; /* Más espacio entre título y contenido */
     text-align: center;
-    border-bottom: 1px solid #222;
-    padding-bottom: 10px;
+    
+    /* Línea decorativa dorada */
+    border-bottom: 1px solid var(--accent); 
+    padding-bottom: 15px;
+    
     display: inline-block;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    color: var(--text-main);
 }
 
 /* =========================================
-   LIBROS
+   LIBROS (BOOKS)
    ========================================= */
 .books-section {
+    background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
-    gap: 60px; /* Separación entre libros */
+    gap: 80px; /* Mucho espacio entre libros para dar importancia a cada uno */
 }
 
 .book-card {
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
     margin: 0 auto;
     text-align: center;
 }
 
-.book-link {
-    display: block;
+.book-link:hover .book-title {
+    color: var(--accent); /* Título dorado al hacer hover en el bloque */
+    transition: color 0.3s;
 }
 
-/* Placeholder para la portada si no carga la imagen */
+/* Placeholder de portada */
 .book-cover-placeholder {
     width: 100%;
-    aspect-ratio: 2/3; /* Proporción estándar de libro */
-    background-color: #1a1a1a;
+    aspect-ratio: 2/3;
+    background-color: #0d121c; /* Fondo placeholder acorde a la paleta */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     overflow: hidden;
-    border: 1px solid #222;
+    border: 1px solid rgba(138, 147, 160, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra sutil para profundidad */
 }
 
 .book-cover-placeholder img {
@@ -221,71 +257,105 @@ section {
     height: 100%;
     object-fit: cover;
     display: block;
+    opacity: 0.9; /* Imagen un poco matizada para no deslumbrar */
+    transition: opacity 0.3s ease;
+}
+
+.book-link:hover .book-cover-placeholder img {
+    opacity: 1;
 }
 
 .book-title {
     font-family: var(--font-serif);
-    font-size: 1.4rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     color: var(--text-main);
+    font-weight: 500;
 }
 
 .book-desc {
     font-size: 0.95rem;
     color: var(--text-muted);
     font-style: italic;
+    font-family: var(--font-serif);
 }
 
 /* =========================================
-   PROYECTOS Y AUTOR
+   PROYECTOS (WIP) - Fondo Alterno
    ========================================= */
-.wip-section, .author-section {
-    background-color: #0f0f0f; /* Un tono ligeramente diferente para separar */
+.wip-section {
+    background-color: var(--bg-alt); /* Color azul oscuro alternativo */
     text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
 }
 
-.wip-content p, .author-section p {
-    margin-bottom: 15px;
-    color: #ccc;
-    font-size: 1rem;
+.wip-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.wip-content p {
+    margin-bottom: 20px;
+    color: #c0c8d1; /* Ligeramente más brillante que text-muted */
+    font-size: 1.05rem;
 }
 
 .wip-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.8rem;
+    color: var(--accent); /* Nota en dorado */
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 20px;
+    letter-spacing: 1.5px;
+    margin-top: 30px;
+    opacity: 0.9;
+}
+
+/* =========================================
+   SOBRE EL AUTOR
+   ========================================= */
+.author-section {
+    background-color: var(--bg-color); /* Vuelta al fondo principal */
+    text-align: center;
+}
+
+.author-section p {
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 1.05rem;
 }
 
 /* =========================================
    FOOTER
    ========================================= */
 .site-footer {
-    padding: 40px 5%;
+    padding: 60px 6%;
     text-align: center;
-    border-top: 1px solid #222;
-    margin-top: 40px;
+    background-color: var(--bg-color);
+    border-top: 1px solid rgba(184, 155, 94, 0.2); /* Borde superior dorado muy tenue */
+    margin-top: 0;
 }
 
 .social-icons {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .social-icons a {
     display: inline-block;
-    margin: 0 15px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    margin: 0 18px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
     color: var(--text-muted);
-    transition: color 0.3s;
+    font-weight: 600;
 }
 
 .social-icons a:hover {
-    color: var(--text-main);
+    color: var(--accent); /* Hover dorado */
 }
 
 .copyright {
-    font-size: 0.75rem;
-    color: #444;
+    font-size: 0.7rem;
+    color: #4a5568; /* Un gris más oscuro para que no destaque */
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
