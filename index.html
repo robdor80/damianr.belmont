@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damian R. Belmont | Autor</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <meta name="description" content="Sitio oficial del autor Damian R. Belmont. Narrativa oscura y universos literarios.">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="author-name">DAMIAN R. BELMONT</div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="menu-close" aria-label="Cerrar menú">&times;</button>
+        <ul class="nav-list">
+            <li><a href="#" class="nav-link">HOME</a></li>
+            <li><a href="#books" class="nav-link">BOOKS</a></li>
+            <li><a href="#author" class="nav-link">AUTHOR</a></li>
+            <li><a href="#method" class="nav-link">METHOD</a></li>
+            <li><a href="#news" class="nav-link">NEWS</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Universos en la sombra</h1>
+                <p class="tagline">Explorando la oscuridad de la condición humana a través de la ficción especulativa.</p>
+            </div>
+        </section>
+
+        <section id="books" class="books-section">
+            <h2 class="section-title">Obras Publicadas</h2>
+            
+            <article class="book-card">
+                <a href="#" class="book-link">
+                    <div class="book-cover-placeholder">
+                        <img src="assets/images/portada_ejemplo_1.jpg" alt="Portada Libro 1" onerror="this.style.display='none'; this.parentNode.innerText='[IMG PORTADA]'">
+                    </div>
+                    <h3 class="book-title">El Ecosistema del Vacío</h3>
+                    <p class="book-desc">Donde termina la realidad, empieza el miedo.</p>
+                </a>
+            </article>
+
+            <article class="book-card">
+                <a href="#" class="book-link">
+                    <div class="book-cover-placeholder">
+                         <img src="assets/images/portada_ejemplo_2.jpg" alt="Portada Libro 2" onerror="this.style.display='none'; this.parentNode.innerText='[IMG PORTADA]'">
+                    </div>
+                    <h3 class="book-title">Crónicas de Ceniza</h3>
+                    <p class="book-desc">La historia de lo que queda cuando todo arde.</p>
+                </a>
+            </article>
+        </section>
+
+        <section class="wip-section">
+            <h2 class="section-title">En Desarrollo</h2>
+            <div class="wip-content">
+                <p>Actualmente trabajando en el cierre de la <em>Trilogía del Silencio</em>. Fase de corrección.</p>
+                <p class="wip-note">Próximas novedades: Invierno 2026.</p>
+            </div>
+        </section>
+
+        <section id="author" class="author-section">
+            <h2 class="section-title">Sobre el Autor</h2>
+            <p>Damian R. Belmont construye arquitecturas narrativas complejas desde Vigo. Su obra prioriza la atmósfera y la psicología sobre la acción frenética.</p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="social-icons">
+            <a href="#">TW</a>
+            <a href="#">IG</a>
+            <a href="#">GR</a>
+        </div>
+        <p class="copyright">&copy; 2026 Damian R. Belmont</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuClose = document.querySelector('.menu-close');
+            const mobileNav = document.getElementById('mobileNav');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Abrir menú
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+            });
+
+            // Cerrar menú
+            const closeMenu = () => {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            menuClose.addEventListener('click', closeMenu);
+
+            // Cerrar al hacer clic en un enlace
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        });
+    </script>
+</body>
+</html>

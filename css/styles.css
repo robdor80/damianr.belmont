@@ -1,0 +1,291 @@
+/* =========================================
+   VARIABLES Y RESET
+   ========================================= */
+   :root {
+    --bg-color: #0a0a0a;       /* Negro profundo */
+    --text-main: #e0e0e0;      /* Blanco roto */
+    --text-muted: #888888;     /* Gris para secundarios */
+    --accent: #d4af37;         /* Dorado muy sutil y apagado (opcional para detalles) */
+    --font-serif: 'Georgia', 'Times New Roman', serif; /* Elegancia */
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* UI Limpia */
+    --header-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Texto nítido en iOS */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   HEADER FIJO
+   ========================================= */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(10, 10, 10, 0.95); /* Casi opaco */
+    border-bottom: 1px solid #222;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-name {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* =========================================
+   MENÚ MÓVIL (OVERLAY)
+   ========================================= */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%); /* Oculto arriba */
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+}
+
+.menu-close {
+    position: absolute;
+    top: 15px;
+    right: 5%;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.nav-list {
+    text-align: center;
+}
+
+.nav-list li {
+    margin: 25px 0;
+}
+
+.nav-link {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link:active {
+    color: var(--text-main);
+}
+
+/* =========================================
+   HERO / PRESENTACIÓN
+   ========================================= */
+.hero-section {
+    padding-top: calc(var(--header-height) + 40px);
+    padding-bottom: 60px;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+    color: var(--text-main);
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   SECCIÓN GENÉRICA
+   ========================================= */
+section {
+    padding: 60px 5%;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 1px solid #222;
+    padding-bottom: 10px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* =========================================
+   LIBROS
+   ========================================= */
+.books-section {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Separación entre libros */
+}
+
+.book-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.book-link {
+    display: block;
+}
+
+/* Placeholder para la portada si no carga la imagen */
+.book-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 2/3; /* Proporción estándar de libro */
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+
+.book-cover-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.book-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.book-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* =========================================
+   PROYECTOS Y AUTOR
+   ========================================= */
+.wip-section, .author-section {
+    background-color: #0f0f0f; /* Un tono ligeramente diferente para separar */
+    text-align: center;
+}
+
+.wip-content p, .author-section p {
+    margin-bottom: 15px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.wip-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+    padding: 40px 5%;
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 40px;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--text-main);
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: #444;
+}
