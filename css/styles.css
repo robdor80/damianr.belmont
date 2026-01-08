@@ -1,7 +1,7 @@
 /* =========================================
    VARIABLES Y PALETA DE COLOR
    ========================================= */
-   :root {
+:root {
     /* Paleta Autoridad Literaria */
     --bg-color: #050b14;       /* Celúreo muy profundo, casi negro */
     --bg-alt: #0a131f;         /* Variación sutil para contraste */
@@ -10,13 +10,11 @@
     --accent: #b89b5e;         /* Dorado oscuro apagado (Antique Gold) */
     
     /* Tipografía */
-    /* Serif fuerte para Títulos y Nombre (Autoridad) */
     --font-serif: 'Georgia', 'Times New Roman', serif; 
-    /* Sans limpia para lectura (Modernidad) */
     --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
     
     /* Dimensiones */
-    --header-height: 70px;
+    --header-height: 75px; /* Un poco más alto para acomodar el nombre doble */
 }
 
 /* =========================================
@@ -33,7 +31,7 @@ body {
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.7;
-    -webkit-font-smoothing: antialiased; /* Renderizado premium en Mac/iOS */
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -47,7 +45,7 @@ ul {
 }
 
 /* =========================================
-   HEADER FIJO (Refinado)
+   HEADER FIJO (GRID LAYOUT)
    ========================================= */
 .site-header {
     position: fixed;
@@ -55,8 +53,8 @@ ul {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background-color: rgba(5, 11, 20, 0.98); /* Casi sólido */
-    border-bottom: 1px solid rgba(184, 155, 94, 0.15); /* Línea dorada muy sutil */
+    background-color: rgba(5, 11, 20, 0.98);
+    border-bottom: 1px solid rgba(184, 155, 94, 0.15);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -66,51 +64,55 @@ ul {
 
 .header-container {
     width: 90%;
-    display: flex;
-    justify-content: space-between;
+    /* GRID: 3 columnas (Izquierda | Centro | Derecha) */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
 }
 
-/* Agrupación Nombre + Logo */
-.brand-identity {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Espacio entre nombre y logo */
-}
-
+/* 1. IZQUIERDA: Nombre del Autor */
 .author-name {
+    display: flex;
+    flex-direction: column; /* Apila los nombres */
+    align-items: center;    /* Centra BELMONT respecto a DAMIAN R. */
+    justify-self: start;    /* Pega el bloque a la izquierda */
+    
     font-family: var(--font-serif);
-    font-size: 0.95rem; /* Tamaño controlado, no chillón */
+    font-size: 0.75rem;     /* Tamaño ajustado para doble línea */
     letter-spacing: 1.5px;
     text-transform: uppercase;
     font-weight: bold;
-    color: var(--accent); /* Dorado - Identidad principal */
+    color: var(--accent);
+    line-height: 1.3;
 }
 
+/* 2. CENTRO: Logo DRB */
 .header-logo {
-    height: 24px; /* Pequeño, firma visual */
+    height: 32px; /* Tamaño de la firma */
     width: auto;
-    opacity: 0.9;
-    display: block;
+    opacity: 0.95;
+    justify-self: center; /* Centrado matemático absoluto */
 }
 
+/* 3. DERECHA: Menú Hamburguesa */
 .menu-toggle {
     background: none;
     border: none;
-    color: var(--accent); /* Dorado para coherencia con el nombre */
+    color: var(--accent);
     font-size: 1.8rem;
     cursor: pointer;
-    padding: 0 5px;
-    transition: transform 0.2s ease, opacity 0.2s;
+    padding: 0;
+    justify-self: end; /* Pega el menú a la derecha */
+    transition: opacity 0.2s;
 }
 
 .menu-toggle:active {
+    opacity: 0.7;
     transform: scale(0.95);
-    opacity: 0.8;
 }
 
 /* =========================================
-   MENÚ MÓVIL
+   MENÚ MÓVIL (OVERLAY)
    ========================================= */
 .mobile-nav {
     position: fixed;
@@ -144,6 +146,10 @@ ul {
     line-height: 1;
 }
 
+.nav-list {
+    text-align: center;
+}
+
 .nav-list li {
     margin: 30px 0;
 }
@@ -164,7 +170,7 @@ ul {
    HERO / PRESENTACIÓN
    ========================================= */
 .hero-section {
-    padding-top: calc(var(--header-height) + 60px);
+    padding-top: calc(var(--header-height) + 50px);
     padding-bottom: 80px;
     padding-left: 6%;
     padding-right: 6%;
@@ -193,10 +199,10 @@ ul {
 }
 
 /* =========================================
-   SECCIONES Y TÍTULOS
+   SECCIONES GENERALES
    ========================================= */
 section {
-    padding: 70px 0; /* Padding lateral se maneja internamente */
+    padding: 70px 0;
 }
 
 .section-title {
@@ -210,7 +216,6 @@ section {
     display: table;
     margin-left: auto;
     margin-right: auto;
-    /* Línea decorativa estilo autor clásico */
     border-bottom: 1px solid var(--accent);
     padding-bottom: 10px;
 }
@@ -219,14 +224,14 @@ section {
    CARRUSEL DE LIBROS (MÓVIL)
    ========================================= */
 .books-section {
-    background-color: var(--bg-alt); /* Fondo ligeramente distinto para resaltar */
-    overflow: hidden; /* Vital para el carrusel */
+    background-color: var(--bg-alt);
+    overflow: hidden;
 }
 
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 500px; /* Limite ancho en tablets pequeñas */
+    max-width: 500px;
     margin: 0 auto;
     height: auto;
     padding: 0 10px;
@@ -239,13 +244,13 @@ section {
 
 .carousel-track {
     display: flex;
-    transition: transform 0.4s ease-out; /* Movimiento suave */
+    transition: transform 0.4s ease-out;
     width: 100%;
 }
 
 .carousel-slide {
-    min-width: 100%; /* Cada slide ocupa el 100% del contenedor visible */
-    padding: 0 15px; /* Espacio lateral interno */
+    min-width: 100%;
+    padding: 0 20px; /* Margen lateral para que la carta no toque bordes */
     display: flex;
     justify-content: center;
 }
@@ -256,22 +261,27 @@ section {
     text-align: center;
 }
 
+.book-link {
+    display: block;
+}
+
 .book-cover-placeholder {
     width: 100%;
-    aspect-ratio: 2/3.1; /* Proporción elegante vertical */
+    aspect-ratio: 2/3; /* Proporción Vertical Libro */
     background-color: #050b14;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 25px;
     border: 1px solid rgba(138, 147, 160, 0.1);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4); /* Sombra profunda */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    overflow: hidden; /* IMPORTANTE: Recorta si la imagen excede */
 }
 
 .book-cover-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* IMPORTANTE: Cubre el área sin deformar */
     display: block;
 }
 
@@ -302,7 +312,7 @@ section {
 /* Botones Carrusel */
 .carousel-btn {
     position: absolute;
-    top: 35%; /* Alineados visualmente con la portada */
+    top: 35%; /* Alineado con portada */
     transform: translateY(-50%);
     background: transparent;
     border: none;
@@ -315,14 +325,12 @@ section {
     transition: opacity 0.3s;
 }
 
-.carousel-btn:hover, .carousel-btn:active {
+.carousel-btn:hover {
     opacity: 1;
 }
 
 .prev-btn { left: 0; }
 .next-btn { right: 0; }
-
-/* Ocultar botón si no es necesario (JS lo manejará) */
 .carousel-btn.is-hidden { display: none; }
 
 
@@ -337,6 +345,7 @@ section {
 .wip-content p, .author-section p {
     color: #c0c8d1;
     margin-bottom: 20px;
+    font-size: 1.05rem;
 }
 
 .wip-note {
