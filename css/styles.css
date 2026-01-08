@@ -1,20 +1,22 @@
 /* =========================================
    VARIABLES Y PALETA DE COLOR
    ========================================= */
-:root {
-    /* Paleta solicitada: Azul Oscuro Celúreo + Dorado Apagado */
-    --bg-color: #050b14;       /* Azul muy oscuro, casi negro (Fondo principal) */
-    --bg-alt: #0a1624;         /* Azul oscuro ligeramente más claro (Secciones alternas) */
-    --text-main: #e6e6e6;      /* Blanco roto (Lectura principal) */
-    --text-muted: #8a93a0;     /* Gris azulado (Textos secundarios) */
-    --accent: #b89b5e;         /* Dorado oscuro apagado (Solo acentos) */
+   :root {
+    /* Paleta Autoridad Literaria */
+    --bg-color: #050b14;       /* Celúreo muy profundo, casi negro */
+    --bg-alt: #0a131f;         /* Variación sutil para contraste */
+    --text-main: #e6e6e6;      /* Blanco roto (hueso) */
+    --text-muted: #8a93a0;     /* Gris azulado metálico */
+    --accent: #b89b5e;         /* Dorado oscuro apagado (Antique Gold) */
     
     /* Tipografía */
-    --font-serif: 'Georgia', 'Times New Roman', serif; /* Elegancia literaria */
-    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Limpieza UI */
+    /* Serif fuerte para Títulos y Nombre (Autoridad) */
+    --font-serif: 'Georgia', 'Times New Roman', serif; 
+    /* Sans limpia para lectura (Modernidad) */
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
     
     /* Dimensiones */
-    --header-height: 70px;     /* Aumentado ligeramente para más aire */
+    --header-height: 70px;
 }
 
 /* =========================================
@@ -30,8 +32,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-sans);
-    line-height: 1.7;          /* Mayor altura de línea para mejor lectura */
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased; /* Renderizado premium en Mac/iOS */
 }
 
 a {
@@ -45,7 +47,7 @@ ul {
 }
 
 /* =========================================
-   HEADER FIJO
+   HEADER FIJO (Refinado)
    ========================================= */
 .site-header {
     position: fixed;
@@ -53,47 +55,62 @@ ul {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background-color: rgba(5, 11, 20, 0.95); /* Fondo base con ligera transparencia */
-    border-bottom: 1px solid rgba(138, 147, 160, 0.1); /* Línea sutil gris azulada */
+    background-color: rgba(5, 11, 20, 0.98); /* Casi sólido */
+    border-bottom: 1px solid rgba(184, 155, 94, 0.15); /* Línea dorada muy sutil */
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(5px); /* Pequeño desenfoque si el navegador lo soporta */
+    backdrop-filter: blur(8px);
 }
 
 .header-container {
-    width: 88%; /* Márgenes laterales más cuidados */
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Agrupación Nombre + Logo */
+.brand-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre nombre y logo */
+}
+
 .author-name {
     font-family: var(--font-serif);
-    font-size: 0.95rem;
-    letter-spacing: 2.5px; /* Más aire entre letras */
+    font-size: 0.95rem; /* Tamaño controlado, no chillón */
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-weight: 600;
-    color: var(--text-main);
+    font-weight: bold;
+    color: var(--accent); /* Dorado - Identidad principal */
+}
+
+.header-logo {
+    height: 24px; /* Pequeño, firma visual */
+    width: auto;
+    opacity: 0.9;
+    display: block;
 }
 
 .menu-toggle {
     background: none;
     border: none;
-    color: var(--text-main);
-    font-size: 1.6rem;
+    color: var(--accent); /* Dorado para coherencia con el nombre */
+    font-size: 1.8rem;
     cursor: pointer;
-    padding: 5px;
-    transition: color 0.3s ease;
+    padding: 0 5px;
+    transition: transform 0.2s ease, opacity 0.2s;
 }
 
-.menu-toggle:hover {
-    color: var(--accent); /* Dorado al pasar el ratón */
+.menu-toggle:active {
+    transform: scale(0.95);
+    opacity: 0.8;
 }
 
 /* =========================================
-   MENÚ MÓVIL (OVERLAY)
+   MENÚ MÓVIL
    ========================================= */
 .mobile-nav {
     position: fixed;
@@ -108,7 +125,7 @@ ul {
     justify-content: center;
     align-items: center;
     transform: translateY(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Animación más suave */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .mobile-nav.active {
@@ -118,83 +135,68 @@ ul {
 .menu-close {
     position: absolute;
     top: 20px;
-    right: 6%;
+    right: 5%;
     background: none;
     border: none;
-    color: var(--text-muted);
+    color: var(--accent);
     font-size: 2.5rem;
     cursor: pointer;
     line-height: 1;
-    transition: color 0.3s;
-}
-
-.menu-close:hover {
-    color: var(--accent);
-}
-
-.nav-list {
-    text-align: center;
 }
 
 .nav-list li {
-    margin: 30px 0; /* Más espacio vertical entre opciones */
+    margin: 30px 0;
 }
 
 .nav-link {
     font-family: var(--font-serif);
-    font-size: 1.4rem;
-    letter-spacing: 3px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: normal;
 }
 
 .nav-link:hover, .nav-link:active {
-    color: var(--accent); /* Dorado activo */
+    color: var(--accent);
 }
 
 /* =========================================
    HERO / PRESENTACIÓN
    ========================================= */
 .hero-section {
-    /* Ajuste para header fijo + más aire superior/inferior */
-    padding-top: calc(var(--header-height) + 60px); 
+    padding-top: calc(var(--header-height) + 60px);
     padding-bottom: 80px;
     padding-left: 6%;
     padding-right: 6%;
-    
-    /* Aumento de altura mínima para mayor presencia */
-    min-height: 65vh; 
-    
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-bottom: 1px solid rgba(138, 147, 160, 0.05); /* Separador casi invisible */
 }
 
 .hero-content h1 {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
+    font-size: 2rem;
     line-height: 1.3;
     margin-bottom: 25px;
-    font-weight: 400; /* Menos peso visual, más elegante */
+    font-weight: normal;
     color: var(--text-main);
 }
 
 .tagline {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
-    max-width: 320px; /* Ancho controlado para lectura en móvil */
+    max-width: 400px;
     margin: 0 auto;
     font-weight: 300;
 }
 
 /* =========================================
-   SECCIONES GENERALES
+   SECCIONES Y TÍTULOS
    ========================================= */
 section {
-    padding: 80px 6%; /* Mayor respiración (padding vertical aumentado) */
+    padding: 70px 0; /* Padding lateral se maneja internamente */
 }
 
 .section-title {
@@ -202,54 +204,68 @@ section {
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 50px; /* Más espacio entre título y contenido */
+    margin-bottom: 40px;
     text-align: center;
-    
-    /* Línea decorativa dorada */
-    border-bottom: 1px solid var(--accent); 
-    padding-bottom: 15px;
-    
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     color: var(--text-main);
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    /* Línea decorativa estilo autor clásico */
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 10px;
 }
 
 /* =========================================
-   LIBROS (BOOKS)
+   CARRUSEL DE LIBROS (MÓVIL)
    ========================================= */
 .books-section {
-    background-color: var(--bg-color);
-    display: flex;
-    flex-direction: column;
-    gap: 80px; /* Mucho espacio entre libros para dar importancia a cada uno */
+    background-color: var(--bg-alt); /* Fondo ligeramente distinto para resaltar */
+    overflow: hidden; /* Vital para el carrusel */
 }
 
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Limite ancho en tablets pequeñas */
+    margin: 0 auto;
+    height: auto;
+    padding: 0 10px;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-out; /* Movimiento suave */
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%; /* Cada slide ocupa el 100% del contenedor visible */
+    padding: 0 15px; /* Espacio lateral interno */
+    display: flex;
+    justify-content: center;
+}
+
+/* Tarjeta de Libro */
 .book-card {
     width: 100%;
-    max-width: 380px;
-    margin: 0 auto;
     text-align: center;
 }
 
-.book-link:hover .book-title {
-    color: var(--accent); /* Título dorado al hacer hover en el bloque */
-    transition: color 0.3s;
-}
-
-/* Placeholder de portada */
 .book-cover-placeholder {
     width: 100%;
-    aspect-ratio: 2/3;
-    background-color: #0d121c; /* Fondo placeholder acorde a la paleta */
+    aspect-ratio: 2/3.1; /* Proporción elegante vertical */
+    background-color: #050b14;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 25px;
-    overflow: hidden;
     border: 1px solid rgba(138, 147, 160, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra sutil para profundidad */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4); /* Sombra profunda */
 }
 
 .book-cover-placeholder img {
@@ -257,105 +273,104 @@ section {
     height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 0.9; /* Imagen un poco matizada para no deslumbrar */
-    transition: opacity 0.3s ease;
-}
-
-.book-link:hover .book-cover-placeholder img {
-    opacity: 1;
 }
 
 .book-title {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
     color: var(--text-main);
-    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.book-meta {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .book-desc {
     font-size: 0.95rem;
     color: var(--text-muted);
     font-style: italic;
-    font-family: var(--font-serif);
+    line-height: 1.5;
+    padding: 0 10px;
 }
+
+/* Botones Carrusel */
+.carousel-btn {
+    position: absolute;
+    top: 35%; /* Alineados visualmente con la portada */
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.carousel-btn:hover, .carousel-btn:active {
+    opacity: 1;
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+/* Ocultar botón si no es necesario (JS lo manejará) */
+.carousel-btn.is-hidden { display: none; }
+
 
 /* =========================================
-   PROYECTOS (WIP) - Fondo Alterno
+   OTRAS SECCIONES (WIP & AUTHOR)
    ========================================= */
-.wip-section {
-    background-color: var(--bg-alt); /* Color azul oscuro alternativo */
+.wip-section, .author-section {
+    padding: 80px 8%;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(255,255,255,0.02);
 }
 
-.wip-content {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.wip-content p {
+.wip-content p, .author-section p {
+    color: #c0c8d1;
     margin-bottom: 20px;
-    color: #c0c8d1; /* Ligeramente más brillante que text-muted */
-    font-size: 1.05rem;
 }
 
 .wip-note {
     font-size: 0.8rem;
-    color: var(--accent); /* Nota en dorado */
+    color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     margin-top: 30px;
-    opacity: 0.9;
-}
-
-/* =========================================
-   SOBRE EL AUTOR
-   ========================================= */
-.author-section {
-    background-color: var(--bg-color); /* Vuelta al fondo principal */
-    text-align: center;
-}
-
-.author-section p {
-    max-width: 500px;
-    margin: 0 auto;
-    color: var(--text-muted);
-    font-size: 1.05rem;
 }
 
 /* =========================================
    FOOTER
    ========================================= */
 .site-footer {
-    padding: 60px 6%;
+    padding: 50px 5%;
     text-align: center;
+    border-top: 1px solid rgba(184, 155, 94, 0.1);
     background-color: var(--bg-color);
-    border-top: 1px solid rgba(184, 155, 94, 0.2); /* Borde superior dorado muy tenue */
-    margin-top: 0;
-}
-
-.social-icons {
-    margin-bottom: 25px;
 }
 
 .social-icons a {
     display: inline-block;
-    margin: 0 18px;
+    margin: 0 15px;
     font-size: 0.85rem;
     letter-spacing: 2px;
     color: var(--text-muted);
-    font-weight: 600;
 }
 
 .social-icons a:hover {
-    color: var(--accent); /* Hover dorado */
+    color: var(--accent);
 }
 
 .copyright {
     font-size: 0.7rem;
-    color: #4a5568; /* Un gris más oscuro para que no destaque */
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    color: #444;
+    margin-top: 20px;
 }

@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Damian R. Belmont | Autor</title>
-    
+    <title>Damian R. <br>Belmont | Autor</title>
+
     <link rel="stylesheet" href="css/styles.css">
-    
-    <meta name="description" content="Sitio oficial del autor Damian R. Belmont. Narrativa oscura y universos literarios.">
+    <link rel="icon" href="assets/images/DRB.png" type="image/png">
+
+    <meta name="description" content="Sitio oficial del autor Damian R. Belmont. Narrativa y universos literarios.">
 </head>
+
 <body>
 
     <header class="site-header">
         <div class="header-container">
-            <div class="author-name">DAMIAN R. BELMONT</div>
+            <div class="brand-identity">
+                <span class="author-name">DAMIAN R. BELMONT</span>
+                <img src="assets/images/DRB.png" alt="Firma DRB" class="header-logo">
+            </div>
+
             <button class="menu-toggle" aria-label="Abrir menú">☰</button>
         </div>
     </header>
@@ -34,32 +41,54 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h1>Universos en la sombra</h1>
-                <p class="tagline">Explorando la oscuridad de la condición humana a través de la ficción especulativa.</p>
+                <p class="tagline">Explorando la oscuridad de la condición humana a través de la ficción especulativa.
+                </p>
             </div>
         </section>
 
         <section id="books" class="books-section">
-            <h2 class="section-title">Obras Publicadas</h2>
-            
-            <article class="book-card">
-                <a href="#" class="book-link">
-                    <div class="book-cover-placeholder">
-                        <img src="assets/images/portada_ejemplo_1.jpg" alt="Portada Libro 1" onerror="this.style.display='none'; this.parentNode.innerText='[IMG PORTADA]'">
-                    </div>
-                    <h3 class="book-title">El Ecosistema del Vacío</h3>
-                    <p class="book-desc">Donde termina la realidad, empieza el miedo.</p>
-                </a>
-            </article>
+            <h2 class="section-title">Obras Selectas</h2>
 
-            <article class="book-card">
-                <a href="#" class="book-link">
-                    <div class="book-cover-placeholder">
-                         <img src="assets/images/portada_ejemplo_2.jpg" alt="Portada Libro 2" onerror="this.style.display='none'; this.parentNode.innerText='[IMG PORTADA]'">
-                    </div>
-                    <h3 class="book-title">Crónicas de Ceniza</h3>
-                    <p class="book-desc">La historia de lo que queda cuando todo arde.</p>
-                </a>
-            </article>
+            <div class="carousel-container">
+
+                <button class="carousel-btn prev-btn" aria-label="Anterior">❮</button>
+
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+
+                        <li class="carousel-slide current-slide">
+                            <article class="book-card">
+                                <a href="#" class="book-link">
+                                    <div class="book-cover-placeholder">
+                                        <img src="assets/images/portada_ejemplo_1.jpg" alt="Portada Libro 1"
+                                            onerror="this.style.display='none'; this.parentNode.innerText='[PORTADA]'">
+                                    </div>
+                                    <h3 class="book-title">El Ecosistema del Vacío</h3>
+                                    <p class="book-meta">2024 | Ficción Especulativa</p>
+                                    <p class="book-desc">Donde termina la realidad, empieza el miedo visceral.</p>
+                                </a>
+                            </article>
+                        </li>
+
+                        <li class="carousel-slide">
+                            <article class="book-card">
+                                <a href="#" class="book-link">
+                                    <div class="book-cover-placeholder">
+                                        <img src="assets/images/portada_ejemplo_2.jpg" alt="Portada Libro 2"
+                                            onerror="this.style.display='none'; this.parentNode.innerText='[PORTADA]'">
+                                    </div>
+                                    <h3 class="book-title">Crónicas de Ceniza</h3>
+                                    <p class="book-meta">2025 | Thriller Psicológico</p>
+                                    <p class="book-desc">La historia de lo que queda cuando todo arde.</p>
+                                </a>
+                            </article>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <button class="carousel-btn next-btn" aria-label="Siguiente">❯</button>
+            </div>
         </section>
 
         <section class="wip-section">
@@ -72,7 +101,8 @@
 
         <section id="author" class="author-section">
             <h2 class="section-title">Sobre el Autor</h2>
-            <p>Damian R. Belmont construye arquitecturas narrativas complejas desde Vigo. Su obra prioriza la atmósfera y la psicología sobre la acción frenética.</p>
+            <p>Damian R. Belmont construye arquitecturas narrativas complejas desde Vigo. Su obra prioriza la atmósfera
+                y la psicología sobre la acción frenética.</p>
         </section>
 
     </main>
@@ -114,4 +144,5 @@
         });
     </script>
 </body>
+
 </html>
