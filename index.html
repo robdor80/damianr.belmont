@@ -65,27 +65,14 @@
                                         <img src="assets/images/libros/Lucifer.png" alt="Portada Lucifer"
                                             onerror="this.style.display='none'; this.parentNode.innerText='[PORTADA]'">
                                     </div>
-                                    <h3 class="book-title">El Ecosistema del Vacío</h3>
-                                    <p class="book-meta">2024 | Ficción Especulativa</p>
-                                    <p class="book-desc">Donde termina la realidad, empieza el miedo visceral.</p>
+                                    <h3 class="book-title">Lucifer, Helel ben Sahar</h3>
+                                    <p class="book-meta">2026 | THRILLER RELIGIOSO</p>
+                                    <p class="book-desc">¿Y si Lucifer no cayó por rebelión, sino que lo hizo por obediencia?</p>
                                 </a>
                             </article>
                         </li>
 
-                        <li class="carousel-slide">
-                            <article class="book-card">
-                                <a href="#" class="book-link">
-                                    <div class="book-cover-placeholder">
-                                        <img src="assets/images/portada_ejemplo_2.jpg" alt="Portada Libro 2"
-                                            onerror="this.style.display='none'; this.parentNode.innerText='[PORTADA]'">
-                                    </div>
-                                    <h3 class="book-title">Crónicas de Ceniza</h3>
-                                    <p class="book-meta">2025 | Thriller Psicológico</p>
-                                    <p class="book-desc">La historia de lo que queda cuando todo arde.</p>
-                                </a>
-                            </article>
-                        </li>
-
+                        
                     </ul>
                 </div>
 
@@ -96,8 +83,8 @@
         <section class="wip-section">
             <h2 class="section-title">En Desarrollo</h2>
             <div class="wip-content">
-                <p>Actualmente trabajando en el cierre de la <em>Trilogía del Silencio</em>. Fase de corrección.</p>
-                <p class="wip-note">Próximas novedades: Invierno 2026.</p>
+                <p>Actualmente trabajando en el cierre de <em>Poseidón</em>. Fase de escritura.</p>
+                <p class="wip-note">Próximas novedades: Verano 2026.</p>
             </div>
         </section>
 
@@ -118,33 +105,8 @@
         <p class="copyright">&copy; 2026 Damian R. Belmont</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menuClose = document.querySelector('.menu-close');
-            const mobileNav = document.getElementById('mobileNav');
-            const navLinks = document.querySelectorAll('.nav-link');
+    <script src="scripts/script.js"></script>
 
-            // Abrir menú
-            menuToggle.addEventListener('click', () => {
-                mobileNav.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
-            });
-
-            // Cerrar menú
-            const closeMenu = () => {
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            };
-
-            menuClose.addEventListener('click', closeMenu);
-
-            // Cerrar al hacer clic en un enlace
-            navLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-        });
-    </script>
 </body>
 
 </html>
